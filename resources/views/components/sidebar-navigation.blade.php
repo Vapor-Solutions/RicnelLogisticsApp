@@ -69,23 +69,23 @@
             </div>
         </li>
     @endif
-    @if (auth()->user()->hasPermissionTo('Read Departments'))
-        <!-- Departments Links-->
-        <li class="nav-item {{ request()->routeIs('admin.departments*') ? 'active' : '' }}">
-            <a class="nav-link {{ request()->routeIs('admin.departments*') ? '' : 'collapsed' }}" href="#"
-                data-toggle="collapse" data-target="#collapseDepartments" aria-expanded="true"
-                aria-controls="collapseDepartments">
+    @if (auth()->user()->hasPermissionTo('Read Customers'))
+        <!-- Customers Links-->
+        <li class="nav-item {{ request()->routeIs('admin.customers*') ? 'active' : '' }}">
+            <a class="nav-link {{ request()->routeIs('admin.customers*') ? '' : 'collapsed' }}" href="#"
+                data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="true"
+                aria-controls="collapseCustomers">
                 <i class="fas fa-fw fa-cubes"></i>
-                <span>Departments</span>
+                <span>Customers</span>
             </a>
-            <div id="collapseDepartments" class="collapse {{ request()->routeIs('admin.departments*') ? 'show' : '' }}"
+            <div id="collapseCustomers" class="collapse {{ request()->routeIs('admin.customers*') ? 'show' : '' }}"
                 aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Options:</h6>
-                    <a class="collapse-item {{ request()->routeIs('admin.departments.index') ? 'active' : '' }}"
-                        href="{{ route('admin.departments.index') }}">View Departments</a>
-                    <a class="collapse-item {{ request()->routeIs('admin.departments.create') ? 'active' : '' }}"
-                        href="{{ route('admin.departments.create') }}">Create a new Department</a>
+                    <a class="collapse-item {{ request()->routeIs('admin.customers.index') ? 'active' : '' }}"
+                        href="{{ route('admin.customers.index') }}">View Customers</a>
+                    <a class="collapse-item {{ request()->routeIs('admin.customers.create') ? 'active' : '' }}"
+                        href="{{ route('admin.customers.create') }}">Create a new Customer</a>
                 </div>
             </div>
         </li>
@@ -246,24 +246,24 @@
             </div>
         </li>
     @endif
-    @if (auth()->user()->hasPermissionTo('Read Dispatches'))
-        <!-- Dispatches Links-->
-        <li class="nav-item {{ request()->routeIs('admin.dispatches.*') ? 'active' : '' }}">
-            <a class="nav-link {{ request()->routeIs('admin.dispatches.*') ? '' : 'collapsed' }}" href="#"
-                data-toggle="collapse" data-target="#collapsedispatches" aria-expanded="true"
-                aria-controls="collapsedispatches">
+    @if (auth()->user()->hasPermissionTo('Read Sales'))
+        <!-- Sales Links-->
+        <li class="nav-item {{ request()->routeIs('admin.sales.*') ? 'active' : '' }}">
+            <a class="nav-link {{ request()->routeIs('admin.sales.*') ? '' : 'collapsed' }}" href="#"
+                data-toggle="collapse" data-target="#collapsesales" aria-expanded="true"
+                aria-controls="collapsesales">
                 <i class="fas fa-fw fa-cash-register"></i>
-                <span>Dispatches</span>
+                <span>Sales</span>
             </a>
-            <div id="collapsedispatches"
-                class="collapse {{ request()->routeIs('admin.dispatches.*') ? 'show' : '' }}"
+            <div id="collapsesales"
+                class="collapse {{ request()->routeIs('admin.sales.*') ? 'show' : '' }}"
                 aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Options:</h6>
-                    <a class="collapse-item {{ request()->routeIs('admin.dispatches.index') ? 'active' : '' }}"
-                        href="{{ route('admin.dispatches.index') }}">View Dispatches List</a>
-                    <a class="collapse-item {{ request()->routeIs('admin.dispatches.create') ? 'active' : '' }}"
-                        href="{{ route('admin.dispatches.create') }}">Add a new Dispatch</a>
+                    <a class="collapse-item {{ request()->routeIs('admin.sales.index') ? 'active' : '' }}"
+                        href="{{ route('admin.sales.index') }}">View Sales List</a>
+                    <a class="collapse-item {{ request()->routeIs('admin.sales.create') ? 'active' : '' }}"
+                        href="{{ route('admin.sales.create') }}">Add a new Sale</a>
                 </div>
             </div>
         </li>
@@ -355,6 +355,27 @@
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
             Pro!</a>
     </div> --}}
+
+    <!-- Quotation Request Links-->
+    <li class="nav-item {{ request()->routeIs('admin.quotation-requests*') ? 'active' : '' }}">
+        <a class="nav-link {{ request()->routeIs('admin.quotation-requests*') ? '' : 'collapsed' }}"
+            href="#" data-toggle="collapse" data-target="#collapsequotation-requests" aria-expanded="true"
+            aria-controls="collapsequotation-requests">
+            <i class="fas fa-fw fa-money-bill"></i>
+            <span>Quotation Requests</span>
+        </a>
+        <div id="collapsequotation-requests"
+            class="collapse {{ request()->routeIs('admin.quotation-requests*') ? 'show' : '' }}"
+            aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Options:</h6>
+                <a class="collapse-item {{ request()->routeIs('admin.quotation-requests.index') ? 'active' : '' }}"
+                    href="{{ route('admin.quotation-requests.index') }}">View Quotation Requests</a>
+                <a class="collapse-item {{ request()->routeIs('admin.quotation-requests.create') ? 'active' : '' }}"
+                    href="{{ route('admin.quotation-requests.create') }}">New Quotation Requests</a>
+            </div>
+        </div>
+    </li>
 
 </ul>
 <!-- End of Sidebar -->

@@ -188,16 +188,16 @@ return new class extends Migration
                 'title'=>'Delete Quotations'
             ],
             [
-                'title'=>'Create Dispatches'
+                'title'=>'Create Sales'
             ],
             [
-                'title'=>'Read Dispatches'
+                'title'=>'Read Sales'
             ],
             [
-                'title'=>'Update Dispatches'
+                'title'=>'Update Sales'
             ],
             [
-                'title'=>'Delete Dispatches'
+                'title'=>'Delete Sales'
             ],
             [
                 'title'=>'Create Users'

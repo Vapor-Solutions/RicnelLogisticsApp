@@ -5,6 +5,7 @@ use App\Http\Livewire\Admin;
 use App\Models\Invoice;
 use App\Models\ProductDescription;
 use App\Models\PurchaseOrder;
+use App\Models\QuoteRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 
@@ -129,6 +130,21 @@ Route::prefix('admin')->middleware([
         Route::get('/create', Admin\PurchasePayments\Create::class)->name('admin.purchase-payments.create');
         Route::get('/{id}/edit', Admin\PurchasePayments\Edit::class)->name('admin.purchase-payments.edit');
     });
+    // Quotation Requests
+    Route::prefix('quotation-requests')->group(function () {
+        Route::get('/', Admin\QuoteRequests\Index::class)->name('admin.quotation-requests.index');
+        Route::get('/create', Admin\QuoteRequests\Create::class)->name('admin.quotation-requests.create');
+        Route::get('/{id}/edit', Admin\QuoteRequests\Edit::class)->name('admin.quotation-requests.edit');
+        Route::get('/{id}/show', Admin\QuoteRequests\Show::class)->name('admin.quotation-requests.show');
+        Route::get('/{id}/quote-request', function($id){
+            $pdf = Pdf::loadView('documents.quote-request', [
+                'quoteRequest' => QuoteRequest::find($id)
+            ]);
+
+            $date = Carbon::parse(QuoteRequest::find($id)->created_at)->toDateString();
+            return $pdf->download($date . '- RFQ#' . $id . '.pdf');
+        })->name('admin.quotation-requests.generate');
+    });
     // Quotations
     Route::middleware('permission:Read Quotations')->prefix('quotations')->group(function () {
         Route::get('/', Admin\Quotations\Index::class)->name('admin.quotations.index');
@@ -155,20 +171,20 @@ Route::prefix('admin')->middleware([
         Route::get('/{id}/edit', Admin\Purchases\Edit::class)->name('admin.purchases.edit');
         Route::get('/{id}/show', Admin\Purchases\Show::class)->name('admin.purchases.show');
     });
-    // // Sales
-    // Route::middleware('permission:Read Admins')->prefix('sales')->group(function () {
-    //     Route::get('/', Admin\Sales\Index::class)->name('admin.sales.index');
-    //     Route::get('/create', Admin\Sales\Create::class)->name('admin.sales.create');
-    //     Route::get('/{id}/edit', Admin\Sales\Edit::class)->name('admin.sales.edit');
-    //     Route::get('/{id}/show', Admin\Sales\Show::class)->name('admin.sales.show');
-    // });
-    // Dispatches
-    Route::middleware('permission:Read Dispatches')->prefix('dispatches')->group(function () {
-        Route::get('/', Admin\Dispatches\Index::class)->name('admin.dispatches.index');
-        Route::get('/create', Admin\Dispatches\Create::class)->name('admin.dispatches.create');
-        Route::get('/{id}/edit', Admin\Dispatches\Edit::class)->name('admin.dispatches.edit');
-        Route::get('/{id}/show', Admin\Dispatches\Show::class)->name('admin.dispatches.show');
+    // Sales
+    Route::middleware('permission:Read Admins')->prefix('sales')->group(function () {
+        Route::get('/', Admin\Sales\Index::class)->name('admin.sales.index');
+        Route::get('/create', Admin\Sales\Create::class)->name('admin.sales.create');
+        Route::get('/{id}/edit', Admin\Sales\Edit::class)->name('admin.sales.edit');
+        Route::get('/{id}/show', Admin\Sales\Show::class)->name('admin.sales.show');
     });
+    // // Dispatches
+    // Route::middleware('permission:Read Dispatches')->prefix('dispatches')->group(function () {
+    //     Route::get('/', Admin\Dispatches\Index::class)->name('admin.dispatches.index');
+    //     Route::get('/create', Admin\Dispatches\Create::class)->name('admin.dispatches.create');
+    //     Route::get('/{id}/edit', Admin\Dispatches\Edit::class)->name('admin.dispatches.edit');
+    //     Route::get('/{id}/show', Admin\Dispatches\Show::class)->name('admin.dispatches.show');
+    // });
 
     // Purchase Orders
     Route::middleware('permission:Read Quotations')->prefix('purchase_orders')->group(function () {
