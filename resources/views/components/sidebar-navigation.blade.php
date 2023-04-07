@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <img width="50px" src="/logo_2.png" alt="">
         </div>
-        <div class="sidebar-brand-text mx-3">Ricnel Logistics<sup>Nairobi</sup></div>
+        <div class="sidebar-brand-text mx-3">Ricnel Logistics<sup>NBO</sup></div>
     </a>
 
     <!-- Divider -->
