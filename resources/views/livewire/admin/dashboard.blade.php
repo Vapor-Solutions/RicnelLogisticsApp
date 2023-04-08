@@ -89,11 +89,11 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Total Dispatch Value ({{ Carbon\Carbon::now()->format('F, Y') }})
+                                    Total Sale Value ({{ Carbon\Carbon::now()->format('F, Y') }})
                                     ({{ env('DEFAULT_CURRENCY_SYMBOL') }})</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                    @if ($dispatchesThisMonth)
-                                        <x-currency></x-currency>{{ number_format($dispatchValue, 2) }}
+                                    @if ($salesThisMonth)
+                                        <x-currency></x-currency>{{ number_format($saleValue, 2) }}
                                     @else
                                         <div class="spinner-grow" role="status"></div>
                                     @endif
