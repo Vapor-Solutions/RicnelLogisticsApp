@@ -84,7 +84,7 @@
                 <td width="300px">
                     <div
                         style="background: transparent; color:black;padding-left: 30px;font-size: 16px;font-weight: medium;letter-spacing: -1px;height: 73px;line-height: 75px;">
-                        Request For Quotation
+                        RFQ
                         RCNL/NBO/{{ Carbon\Carbon::parse($quoteRequest->created_at)->format('y') }}/{{ sprintf('%04d', $quoteRequest->id) }}
                     </div>
                 </td>
