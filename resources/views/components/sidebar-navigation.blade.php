@@ -71,7 +71,7 @@
             </div>
         </li>
     @endif
-    @if (auth()->user()->hasPermissionTo('Read Customers'))
+    {{-- @if (auth()->user()->hasPermissionTo('Read Customers')) --}}
         <!-- Customers Links-->
         <li class="nav-item {{ request()->routeIs('admin.customers*') ? 'active' : '' }}">
             <a class="nav-link {{ request()->routeIs('admin.customers*') ? '' : 'collapsed' }}" href="#"
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </li>
-    @endif
+    {{-- @endif --}}
     @if (auth()->user()->hasPermissionTo('Read Suppliers'))
         <!-- Suppliers Links-->
         <li class="nav-item {{ request()->routeIs('admin.suppliers*') ? 'active' : '' }}">

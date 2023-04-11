@@ -51,6 +51,11 @@ Route::prefix('admin')->middleware([
         Route::get('/create', Admin\Users\Create::class)->name('admin.users.create');
         Route::get('/{id}/edit', Admin\Users\Edit::class)->name('admin.users.edit');
     });
+    Route::prefix('customers')->group(function () {
+        Route::get('/', Admin\Customers\Index::class)->name('admin.customers.index');
+        Route::get('/create', Admin\Customers\Create::class)->name('admin.customers.create');
+        Route::get('/{id}/edit', Admin\Customers\Edit::class)->name('admin.customers.edit');
+    });
     // Departments
     Route::middleware('permission:Read Departments')->prefix('departments')->group(function () {
         Route::get('/', Admin\Departments\Index::class)->name('admin.departments.index');
