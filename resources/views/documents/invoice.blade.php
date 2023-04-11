@@ -193,9 +193,12 @@
 
                 @if ($count > 0)
                     <tr>
-                        <td class="row"><span
-                                style="color:#777;font-size:11px;">#{{ $product->id }}</span><br>{{ $product->title }}
-                            - {{ $product->quantity }}{{ $product->unit->symbol }}</td>
+                        <td class="row">
+                            <span style="color:#777;font-size:11px;">#{{ $product->id }}</span><br>
+                            <small><span
+                                    style="color:#320858">{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
+                                {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</small>
+                        </td>
                         <td class="row">{{ $count }}</td>
                         <td class="row"><span style="color:#777">
                                 <x-currency></x-currency>
@@ -224,10 +227,10 @@
                                 </span>{{ number_format(0, 2) }}</td>
                         </tr>
                         <tr>
-                            <td><strong>VAT 16%:</strong></td>
+                            <td><strong>VAT 0%:</strong></td>
                             <td style="text-align:right"><span style="color:#777">
                                     <x-currency></x-currency>
-                                </span>{{ number_format($total_cost, 2) }}</td>
+                                </span>{{ number_format(0, 2) }}</td>
                         </tr>
                         <tr>
                             <td><strong>Grand total:</strong></td>

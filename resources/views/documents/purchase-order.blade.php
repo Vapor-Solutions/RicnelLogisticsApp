@@ -124,7 +124,9 @@
                 <tr>
                     <td class="row">
                         <span style="color:#777;font-size:11px;">#{{ $product->id }}</span><br>
-                        <small><span style="color:#1575bb">{{ $product->brand->name !='Miscellaneous'? $product->brand->name:'' }}</span> {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</small>
+                        <small><span
+                                style="color:#1575bb">{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
+                            {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</small>
                     </td>
                     <td class="row">{{ $product->pivot->quantity }}</td>
                     <td class="row"><span style="color:#777">

@@ -358,6 +358,27 @@
             Pro!</a>
     </div> --}}
 
+    <!-- Invoice Links-->
+    <li class="nav-item {{ request()->routeIs('admin.invoices*') ? 'active' : '' }}">
+        <a class="nav-link {{ request()->routeIs('admin.invoices*') ? '' : 'collapsed' }}"
+            href="#" data-toggle="collapse" data-target="#collapseinvoices" aria-expanded="true"
+            aria-controls="collapseinvoices">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Invoices</span>
+        </a>
+        <div id="collapseinvoices"
+            class="collapse {{ request()->routeIs('admin.invoices*') ? 'show' : '' }}"
+            aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Options:</h6>
+                <a class="collapse-item {{ request()->routeIs('admin.invoices.index') ? 'active' : '' }}"
+                    href="{{ route('admin.invoices.index') }}">View Invoices</a>
+                <a class="collapse-item {{ request()->routeIs('admin.invoices.create') ? 'active' : '' }}"
+                    href="{{ route('admin.invoices.create') }}">New Invoice</a>
+            </div>
+        </div>
+    </li>
+
     <!-- Quotation Request Links-->
     <li class="nav-item {{ request()->routeIs('admin.quotation-requests*') ? 'active' : '' }}">
         <a class="nav-link {{ request()->routeIs('admin.quotation-requests*') ? '' : 'collapsed' }}"

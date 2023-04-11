@@ -156,19 +156,19 @@ Route::prefix('admin')->middleware([
         Route::get('/create', Admin\Quotations\Create::class)->name('admin.quotations.create');
         Route::get('/{id}/edit', Admin\Quotations\Edit::class)->name('admin.quotations.edit');
     });
-    // // Invoices
-    // Route::middleware('permission:Read Admins')->prefix('invoices')->group(function () {
-    //     Route::get('/', Admin\Invoices\Index::class)->name('admin.invoices.index');
-    //     Route::get('/create', Admin\Invoices\Create::class)->name('admin.invoices.create');
-    //     Route::get('/{id}/show', function ($id) {
-    //         $pdf = Pdf::loadView('documents.invoice', [
-    //             'invoice' => Invoice::find($id)
-    //         ]);
+    // Invoices
+    Route::middleware('permission:Read Admins')->prefix('invoices')->group(function () {
+        Route::get('/', Admin\Invoices\Index::class)->name('admin.invoices.index');
+        Route::get('/create', Admin\Invoices\Create::class)->name('admin.invoices.create');
+        Route::get('/{id}/show', function ($id) {
+            $pdf = Pdf::loadView('documents.invoice', [
+                'invoice' => Invoice::find($id)
+            ]);
 
-    //         $date = Carbon::parse(Invoice::find($id)->created_at)->toDateString();
-    //         return $pdf->download($date . '-Invoice#' . $id . '.pdf');
-    //     })->name('admin.invoices.show');
-    // });
+            $date = Carbon::parse(Invoice::find($id)->created_at)->toDateString();
+            return $pdf->download($date . '-Invoice#' . $id . '.pdf');
+        })->name('admin.invoices.show');
+    });
     // Purchases
     Route::middleware('permission:Read Purchases')->prefix('purchases')->group(function () {
         Route::get('/', Admin\Purchases\Index::class)->name('admin.purchases.index');
