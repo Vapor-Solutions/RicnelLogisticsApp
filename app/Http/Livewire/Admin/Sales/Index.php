@@ -12,6 +12,16 @@ class Index extends Component
 
     protected $paginationTheme = 'bootstrap';
 
+    public function delete($id)
+    {
+        $sale= Sale::find($id);
+        $sale->productItems()->detach();
+        $sale->delete();
+
+        $this->emit('done', [
+            'success'=>"Successfully Deleted that Sale from the system"
+        ]);
+    }
 
     public function render()
     {
