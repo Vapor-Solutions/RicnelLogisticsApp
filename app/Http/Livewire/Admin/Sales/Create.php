@@ -92,7 +92,7 @@ class Create extends Component
             foreach ($productDescription->productItems as $product_item) {
                 if (!$product_item->is_sold) {
                     $product_item->sales()->attach($this->sale->id, [
-                        'sale_price' => $this->price
+                        'sale_price' => $item[2]
                     ]);
                     $count++;
                 }
