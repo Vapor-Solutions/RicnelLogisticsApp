@@ -76,7 +76,7 @@ class Create extends Component
     {
         $this->validate();
 
-        $this->sale->save();
+        // $this->sale->save();
 
         foreach ($this->productsList as $key => $item) {
             $productDescription = ProductDescription::find($item[0]);
