@@ -45,8 +45,15 @@
                                         <option selected>Select one</option>
 
                                         @foreach ($productDescriptions as $product)
-                                            <option @if(!$product->available_items)disabled @endif value="{{ $product->id }}">{{ $product->title }} -
-                                                {{ $product->quantity . $product->unit->symbol }} ({{ $product->available_items }} Available)</option>
+                                            <option @if (!$product->available_items) disabled @endif
+                                                value="{{ $product->id }}">
+                                                {{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}
+                                                {{ $product->title }}
+                                                -
+                                                {{ $product->quantity . $product->unit->symbol }}
+                                                <br>
+                                                <sup>{{ $product->description != '-' ? $product->description : '' }}</sup>
+                                            </option>
                                         @endforeach
                                     </select>
                                     @error('product_id')
@@ -57,7 +64,8 @@
                             <div class="col-md-6 col-12">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Quantity</label>
-                                    <input wire:model="quantity" type="number" min="0" step="1" max="{{ App\Models\ProductDescription::find(intval($product_id))->available_items??0 }}"
+                                    <input wire:model="quantity" type="number" min="0" step="1"
+                                        max="{{ App\Models\ProductDescription::find(intval($product_id))->available_items ?? 0 }}"
                                         class="form-control" name="" id="" aria-describedby="helpId"
                                         placeholder="Enter the Number of items you want to buy">
                                     @error('quantity')
