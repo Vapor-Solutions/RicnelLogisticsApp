@@ -53,6 +53,7 @@
                                                 {{ $product->quantity . $product->unit->symbol }}
                                                 <br>
                                                 <sup>{{ $product->description != '-' ? $product->description : '' }}</sup>
+                                                ({{ $product->available_items }} Available)
                                             </option>
                                         @endforeach
                                     </select>
