@@ -17,6 +17,7 @@
                         <th>Date Added</th>
                         <th>Purchase/Opener</th>
                         <th>status</th>
+                        <th>Price</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -30,6 +31,7 @@
                                 ? '<h5 class="text-danger">WAS PURCHASED</h5>'
                                 : '<h5 class="text-primary">IS OPENING STOCK</h5>' !!}</td>
                             <td>{!! $item->is_dispatched ? '<h5 class="text-danger text-uppercase">Dispatched to '.$item->dispatches()->first()->department->title.'</h5>' : '<h5 class="text-success">IN STOCK</h5>' !!}</td>
+                            <td><x-currency></x-currency>{{ number_format($item->price, 2) }}</td>
                             <td>
                                 <button
                                     onclick="confirm('Are you Sure you want to delete this Product Item?')||event.stopImmediatePropagation()"
