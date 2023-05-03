@@ -121,7 +121,7 @@
 
                                             <tr class="">
                                                 <td scope="row">{{ $product->id }}</td>
-                                                <td>{{ $product->title }} -
+                                                <td>{{ $product->brand->name . ' ' . $product->title }} -
                                                     {{ $product->quantity . $product->unit->symbol }}</td>
                                                 <td>{{ $item[1] }}</td>
                                                 <td>
@@ -157,23 +157,10 @@
                                         <tr class="my-3">
                                             <td style="border-top:0.5px solid #858796" colspan="5"></td>
                                         </tr>
+
                                         <tr>
                                             <td colspan="3"></td>
                                             <td class="text-right">Total</td>
-                                            <td class="text-right">
-                                                <x-currency />{{ number_format(($complete_total * 100) / 116, 2) }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"></td>
-                                            <td class="text-right">VAT (16%)</td>
-                                            <td class="text-right">
-                                                <x-currency />{{ number_format(($complete_total * 16) / 116, 2) }}
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"></td>
-                                            <td class="text-right">Complete Total (16%)</td>
                                             <td class="text-right">
                                                 <x-currency />{{ number_format($complete_total, 2) }}
                                             </td>
