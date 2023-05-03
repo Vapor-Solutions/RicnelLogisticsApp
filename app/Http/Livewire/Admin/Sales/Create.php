@@ -69,7 +69,7 @@ class Create extends Component
 
     public function remove($key)
     {
-        array_splice($this->productsList, $this->productsList[$key], 1);
+        array_splice($this->productsList, $key, 1);
     }
 
 
