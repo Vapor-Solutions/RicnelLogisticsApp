@@ -30,7 +30,7 @@
                             <td>{!! $item->purchases->count() > 0
                                 ? '<h5 class="text-danger">WAS PURCHASED</h5>'
                                 : '<h5 class="text-primary">IS OPENING STOCK</h5>' !!}</td>
-                            <td>{!! $item->is_dispatched ? '<h5 class="text-danger text-uppercase">Dispatched to '.$item->dispatches()->first()->department->title.'</h5>' : '<h5 class="text-success">IN STOCK</h5>' !!}</td>
+                            <td>{!! $item->is_sold ? '<h5 class="text-danger text-uppercase">Sold to '.$item->sales()->first()->department->title.'</h5>' : '<h5 class="text-success">IN STOCK</h5>' !!}</td>
                             <td><x-currency></x-currency>{{ number_format($item->price, 2) }}</td>
                             <td>
                                 <button
