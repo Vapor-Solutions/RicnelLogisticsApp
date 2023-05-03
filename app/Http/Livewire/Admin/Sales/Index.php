@@ -15,6 +15,12 @@ class Index extends Component
     public function delete($id)
     {
         $sale= Sale::find($id);
+        if ($sale->invoice != null) {
+            $this->emit('done', [
+                'warning'=>"This Sale has Already Been Invoiced"
+            ]);
+        }
+
         $sale->productItems()->detach();
         $sale->delete();
 

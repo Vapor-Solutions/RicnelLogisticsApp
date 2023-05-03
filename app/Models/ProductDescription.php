@@ -36,7 +36,7 @@ class ProductDescription extends Model
         $total = 0;
 
         foreach ($this->productItems as $item) {
-            if (!$item->is_dispatched) {
+            if (!$item->is_sold) {
                 $total++;
             }
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Sales;
 
+use App\Models\ActivityLog;
 use App\Models\ProductDescription;
 use App\Models\ProductItem;
 use App\Models\Sale;
@@ -68,7 +69,7 @@ class Create extends Component
 
     public function remove($key)
     {
-        unset($this->productsList[$key]);
+        array_splice($this->productsList, $this->productsList[$key], 1);
     }
 
 
@@ -78,7 +79,7 @@ class Create extends Component
 
         $this->sale->save();
 
-        foreach ($this->productsList as $key => $item) {
+        foreach ($this->productsList as $item) {
             $productDescription = ProductDescription::find($item[0]);
 
 
@@ -103,6 +104,10 @@ class Create extends Component
             }
         }
 
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'payload' => "Created Dispatch No. " . $this->dispatch->id
+        ]);
 
         $this->reset('productsList');
 

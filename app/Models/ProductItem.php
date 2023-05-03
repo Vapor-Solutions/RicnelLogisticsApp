@@ -15,6 +15,10 @@ class ProductItem extends Model
         'price'
     ];
 
+    protected $appends = [
+        'is_sold',
+    ];
+
 
     public function productDescription()
     {
