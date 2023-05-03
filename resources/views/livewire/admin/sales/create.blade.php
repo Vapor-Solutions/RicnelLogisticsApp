@@ -79,7 +79,7 @@
                                     <label for="" class="form-label">Price</label>
                                     <input wire:model="price" type="number" min="1" step="1"
                                         class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder="Recomm: KES {{ number_format((App\Models\ProductDescription::find(intval($product_id))->price ?? 0) * 1.165) }}">
+                                        placeholder="Recomm: KES {{ number_format((App\Models\ProductDescription::find(intval($product_id))->avg_price ?? 0) * 1.165) }}">
                                     @error('price')
                                         <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                                     @enderror

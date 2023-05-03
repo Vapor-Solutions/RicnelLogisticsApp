@@ -19,7 +19,8 @@ class ProductDescription extends Model
         'price',
         'product_category_id',
         'quantity',
-        'available_items'
+        'available_items',
+        'avg_price'
     ];
 
     public function unit()
@@ -29,7 +30,7 @@ class ProductDescription extends Model
 
     public function productItems()
     {
-        return $this->hasMany(ProductItem::class,  'product_description_id','id');
+        return $this->hasMany(ProductItem::class,  'product_description_id', 'id');
     }
     public function getAvailableItemsAttribute()
     {
@@ -71,5 +72,15 @@ class ProductDescription extends Model
     public function productImages()
     {
         return $this->hasMany(ProductImage::class);
+    }
+    public function getAvgPriceAttribute()
+    {
+        $total = 0;
+
+        foreach ($this->productItems as $item) {
+            $total += $item->price;
+        }
+
+        return $total / count($this->productItems);
     }
 }
