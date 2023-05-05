@@ -121,7 +121,7 @@
 
                                             <tr class="">
                                                 <td scope="row">{{ $product->id }}</td>
-                                                <td>{{ $product->brand->name . ' ' . $product->title }} -
+                                                <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' . ' ' . $product->title }} -
                                                     {{ $product->quantity . $product->unit->symbol }}</td>
                                                 <td>{{ $item[1] }}</td>
                                                 <td>
