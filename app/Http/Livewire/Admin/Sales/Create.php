@@ -104,10 +104,6 @@ class Create extends Component
             }
         }
 
-        ActivityLog::create([
-            'user_id' => auth()->user()->id,
-            'payload' => "Created Sale No. " . $this->sale->id
-        ]);
 
         $this->reset('productsList');
 
@@ -115,6 +111,10 @@ class Create extends Component
             'success' => 'Successfully Made the Sale No. #' . $this->sale->id
         ]);
         $this->sale = new Sale();
+        ActivityLog::create([
+            'user_id' => auth()->user()->id,
+            'payload' => "Created Sale No. " . $this->sale->id
+        ]);
     }
 
     public function render()
