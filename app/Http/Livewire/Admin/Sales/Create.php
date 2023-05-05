@@ -44,7 +44,7 @@ class Create extends Component
 
             for ($i = 0; $i < count($this->productsList); $i++) {
                 if (intval($this->productsList[$i][0]) == intval($this->product_id)) {
-                    if ($this->price != intval($this->productsList[$i][2])) {
+                    if ($this->price != floatval($this->productsList[$i][2])) {
                         throw ValidationException::withMessages([
                             'price' => 'Price Doesn\'t Match what is already on the products\' list'
                         ]);
@@ -61,7 +61,7 @@ class Create extends Component
             }
         }
         if ($count == 0) {
-            array_push($this->productsList, [intval($this->product_id), intval($this->quantity), intval($this->price)]);
+            array_push($this->productsList, [intval($this->product_id), intval($this->quantity), floatval($this->price)]);
         }
         $this->reset(['product_id', 'quantity', 'price']);
     }
