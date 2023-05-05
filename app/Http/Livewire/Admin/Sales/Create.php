@@ -106,7 +106,7 @@ class Create extends Component
 
         ActivityLog::create([
             'user_id' => auth()->user()->id,
-            'payload' => "Created Dispatch No. " . $this->dispatch->id
+            'payload' => "Created Sale No. " . $this->sale->id
         ]);
 
         $this->reset('productsList');
