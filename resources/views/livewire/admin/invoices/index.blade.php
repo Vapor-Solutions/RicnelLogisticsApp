@@ -23,7 +23,7 @@
                                     <td scope="row">{{ $invoice->id }}</td>
                                     <td>{{ $invoice->user->name }}</td>
                                     <td>{{ $invoice->sale_id }}</td>
-                                    <td>{{ $invoice->sale->sale_date }}</td>
+                                    <td>{{ Carbon\Carbon::parse($invoice->sale->sale_date)->format('jS F, Y') }}</td>
                                     <td>{{ $invoice->sale->customer->name }}</td>
                                     <td>
                                         <x-currency></x-currency>{{ number_format($invoice->amount, 2) }}
