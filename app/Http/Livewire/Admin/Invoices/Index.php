@@ -18,16 +18,19 @@ class Index extends Component
     }
     public function delete($id)
     {
-        $invoice = Invoice::find($id);
-        $invoice->delete();
+        // $invoice = Invoice::find($id);
+        // $invoice->delete();
 
-        ActivityLog::create([
-            'user_id' => auth()->user()->id,
-            'payload' => "Deleted Invoice No. $invoice->id"
-        ]);
+        // ActivityLog::create([
+        //     'user_id' => auth()->user()->id,
+        //     'payload' => "Deleted Invoice No. $invoice->id"
+        // ]);
 
+        // $this->emit('done', [
+        //     'success' => 'Successfully Deleted the Invoice'
+        // ]);
         $this->emit('done', [
-            'success' => 'Successfully Deleted the Invoice'
+            'info' => 'Invoice Deletion has now been disabled'
         ]);
     }
 
