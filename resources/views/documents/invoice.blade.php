@@ -126,7 +126,7 @@
     <br />
     <br />
     <br />
-    <table>
+    <table width="100%">
         <tbody>
             <tr>
                 <td colspan="3"></td>
