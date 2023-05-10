@@ -10,9 +10,14 @@
             font-family: Verdana, Arial, sans-serif;
         }
 
+        @page {
+            size: 7in 9.25in;
+            margin: 27mm 16mm 27mm 16mm;
+        }
+
         table {
             font-size: x-small;
-            page-break-inside: avoid !important;
+
         }
 
         tfoot tr td {
@@ -119,7 +124,7 @@
                     </tr>
                 @endif
             @endforeach
-            <tr></tr>
+            <tr aria-rowspan="3"></tr>
             <tr>
                 <td colspan="3"></td>
                 <td align="right">Subtotal KES</td>
