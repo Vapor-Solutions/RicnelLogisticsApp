@@ -12,6 +12,7 @@
 
         table {
             font-size: x-small;
+            page-break-inside: avoid !important;
         }
 
         tfoot tr td {
