@@ -122,10 +122,6 @@
         </tbody>
 
     </table>
-    <br />
-    <br />
-    <br />
-    <br />
     <table width="100%">
         <tbody>
             <tr>
@@ -151,8 +147,6 @@
             </tr>
         </tbody>
     </table>
-    <br>
-    <br>
     <h2 style="color: #17046d; text-align:center">Thank You for Your Business!!</h2>
 
 </body>
