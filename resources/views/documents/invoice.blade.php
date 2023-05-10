@@ -120,12 +120,14 @@
             @endforeach
 
         </tbody>
-        <br />
-        <br />
-        <br />
-        <br />
 
-        <tfoot>
+    </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <table>
+        <tbody>
             <tr>
                 <td colspan="3"></td>
                 <td align="right">Subtotal KES</td>
@@ -147,7 +149,7 @@
                     <x-currency></x-currency> {{ number_format($total_cost, 2) }}
                 </td>
             </tr>
-        </tfoot>
+        </tbody>
     </table>
     <br>
     <br>
