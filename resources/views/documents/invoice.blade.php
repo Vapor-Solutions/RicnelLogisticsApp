@@ -9,11 +9,11 @@
         * {
             font-family: Verdana, Arial, sans-serif;
         }
-
+/*
         @page {
             size: 7in 9.25in;
             margin: 27mm 16mm 27mm 16mm;
-        }
+        } */
 
         table {
             font-size: x-small;
@@ -131,21 +131,27 @@
         <br>
         <tfoot>
             <tr>
-                <td colspan="3"></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td align="right">Subtotal KES</td>
                 <td align="right" style="font-size:14px">
                     <x-currency></x-currency> {{ number_format($total_cost, 2) }}
                 </td>
             </tr>
             <tr>
-                <td colspan="3"></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td align="right">Tax KES</td>
                 <td align="right" style="font-size:14px">
                     <x-currency></x-currency> 0.00
                 </td>
             </tr>
             <tr>
-                <td colspan="3"></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td align="right">Total KES</td>
                 <td align="right" class="gray" style="font-size:14px">
                     <x-currency></x-currency> {{ number_format($total_cost, 2) }}
