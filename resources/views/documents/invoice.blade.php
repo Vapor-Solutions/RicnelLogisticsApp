@@ -114,7 +114,7 @@
 
 
                 @if ($count > 0)
-                    <tr style="font-size:12px">
+                    <tr style="font-size:16px">
                         <th scope="row">#{{ $product->id }}</th>
                         <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
                             {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</td>
@@ -125,39 +125,37 @@
                 @endif
             @endforeach
 
-        </tbody>
         <br>
         <br>
         <br>
-        <tfoot>
-            <tr>
+            <tr style="font-size:16px; font-weight:bold">
                 <td></td>
                 <td></td>
                 <td></td>
                 <td align="right">Subtotal KES</td>
-                <td align="right" style="font-size:14px">
+                <td align="right" style="font-size:16px">
                     <x-currency></x-currency> {{ number_format($total_cost, 2) }}
                 </td>
             </tr>
-            <tr>
+            <tr style="font-size:16px; font-weight:bold">
                 <td></td>
                 <td></td>
                 <td></td>
                 <td align="right">Tax KES</td>
-                <td align="right" style="font-size:14px">
+                <td align="right" style="font-size:16px">
                     <x-currency></x-currency> 0.00
                 </td>
             </tr>
-            <tr>
+            <tr style="font-size:16px; font-weight:bold">
                 <td></td>
                 <td></td>
                 <td></td>
                 <td align="right">Total KES</td>
-                <td align="right" class="gray" style="font-size:14px">
+                <td align="right" class="gray" style="font-size:16px">
                     <x-currency></x-currency> {{ number_format($total_cost, 2) }}
                 </td>
             </tr>
-        </tfoot>
+        </tbody>
 
     </table>
     <br>
