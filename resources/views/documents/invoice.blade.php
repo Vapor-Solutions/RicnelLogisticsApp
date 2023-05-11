@@ -9,7 +9,8 @@
         * {
             font-family: Verdana, Arial, sans-serif;
         }
-/*
+
+        /*
         @page {
             size: 7in 9.25in;
             margin: 27mm 16mm 27mm 16mm;
@@ -124,10 +125,6 @@
                     </tr>
                 @endif
             @endforeach
-
-        <br>
-        <br>
-        <br>
             <tr style="font-size:16px; font-weight:bold">
                 <td></td>
                 <td></td>
