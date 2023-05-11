@@ -126,7 +126,7 @@
                 @endif
             @endforeach
             <tr style="font-size:16px; font-weight:bold">
-                <td></td>
+                <th scope="row"></th>
                 <td></td>
                 <td></td>
                 <td align="right">Subtotal KES</td>
@@ -135,7 +135,7 @@
                 </td>
             </tr>
             <tr style="font-size:16px; font-weight:bold">
-                <td></td>
+                <th scope="row"></th>
                 <td></td>
                 <td></td>
                 <td align="right">Tax KES</td>
@@ -144,7 +144,7 @@
                 </td>
             </tr>
             <tr style="font-size:16px; font-weight:bold">
-                <td></td>
+                <th scope="row"></th>
                 <td></td>
                 <td></td>
                 <td align="right">Total KES</td>
