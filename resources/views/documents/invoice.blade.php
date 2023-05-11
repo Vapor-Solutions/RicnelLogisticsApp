@@ -115,7 +115,7 @@
 
 
                 @if ($count > 0)
-                    <tr style="font-size:16px">
+                    <tr style="font-size:12px">
                         <th scope="row">#{{ $product->id }}</th>
                         <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
                             {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</td>
