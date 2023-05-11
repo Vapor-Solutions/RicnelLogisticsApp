@@ -114,16 +114,16 @@
                 @endforeach
 
 
-                {{-- @if ($count > 0) --}}
-                <tr style="font-size:16px">
-                    <th scope="row">#{{ $product->id }}</th>
-                    <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
-                        {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</td>
-                    <td align="right">{{ $count }}</td>
-                    <td align="right">{{ number_format($count > 0 ? $cost / $count : 0, 2) }}</td>
-                    <td align="right">{{ number_format($cost, 2) }}</td>
-                </tr>
-                {{-- @endif --}}
+                @if ($count > 0)
+                    <tr style="font-size:16px">
+                        <th scope="row">#{{ $product->id }}</th>
+                        <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
+                            {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</td>
+                        <td align="right">{{ $count }}</td>
+                        <td align="right">{{ number_format($count > 0 ? $cost / $count : 0, 2) }}</td>
+                        <td align="right">{{ number_format($cost, 2) }}</td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
         <br>
@@ -131,7 +131,7 @@
         <br>
         <br>
         <tfoot>
-            <tr >
+            <tr>
                 <th scope="row"></th>
                 <td></td>
                 <td></td>
@@ -140,7 +140,7 @@
                     <x-currency></x-currency> {{ number_format($total_cost, 2) }}
                 </td>
             </tr>
-            <tr >
+            <tr>
                 <th scope="row"></th>
                 <td></td>
                 <td align="right"></td>
@@ -149,7 +149,7 @@
                     <x-currency></x-currency> 0.00
                 </td>
             </tr>
-            <tr >
+            <tr>
                 <th scope="row"></th>
                 <td></td>
                 <td align="right"></td>
