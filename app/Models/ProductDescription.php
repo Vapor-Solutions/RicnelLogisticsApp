@@ -27,7 +27,7 @@ class ProductDescription extends Model
     {
         return $this->belongsTo(Unit::class);
     }
-    public function category()
+    public function productCategory()
     {
         return $this->belongsTo(ProductCategory::class);
     }
