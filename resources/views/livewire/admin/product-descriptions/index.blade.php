@@ -22,6 +22,7 @@
                                 <th>Title</th>
                                 <th>Brand Name</th>
                                 <th>Description</th>
+                                <th>Category</th>
                                 <th>Unit Size</th>
                                 <th>Unit Price</th>
                                 <th>No. of Units Available</th>
@@ -48,6 +49,7 @@
                                     <td>{{ $description->title }}</td>
                                     <td>{{ $description->brand->name }}</td>
                                     <td>{{ $description->description }}</td>
+                                    <td>{{ $description->category->title }}</td>
                                     <td>{{ $description->quantity . ' ' . $description->unit->symbol }}</td>
                                     <td>KES {{ number_format($description->price, 2) }}</td>
                                     <td>{{ $description->available_items }}</td>

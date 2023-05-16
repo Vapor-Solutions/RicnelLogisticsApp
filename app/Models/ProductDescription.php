@@ -27,6 +27,10 @@ class ProductDescription extends Model
     {
         return $this->belongsTo(Unit::class);
     }
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
 
     public function productItems()
     {
