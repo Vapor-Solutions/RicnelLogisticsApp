@@ -12,6 +12,7 @@ class Invoice extends Model
 
 
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -29,7 +30,7 @@ class Invoice extends Model
 
     public function productDescriptions()
     {
-        return ProductItem::select('product_description_id', DB::raw('MAX(product_items.id) as id'), DB::raw('COUNT(*) as count'))
+        return ProductItem::select('product_description_id', DB::raw('COUNT(*) as count'))
             ->groupBy('product_description_id')
             ->whereIn('id', function ($query) {
                 $query->select('product_item_id')

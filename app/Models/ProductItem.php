@@ -31,7 +31,7 @@ class ProductItem extends Model
     }
     public function sales()
     {
-        return $this->belongsToMany(Sale::class, 'sale_product_item');
+        return $this->belongsToMany(Sale::class, 'sale_product_item', 'sale_id', 'product_item_id');
     }
 
     public function getIsSoldAttribute()
