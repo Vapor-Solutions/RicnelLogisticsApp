@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Invoice;
 use App\Models\ProductItem;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/{id}/product_item',function($id){
     return ProductItem::find($id);
 });
+Route::get('/{id}/invoice',function($id){
+    return Invoice::find($id)->productDescriptions();
+});
+Route::get('/{id}/sale',function($id){
+    return Sale::find($id)->productDescriptions();
+});
+

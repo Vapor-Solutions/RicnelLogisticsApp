@@ -166,8 +166,8 @@ Route::prefix('admin')->middleware([
             ]);
 
             $date = Carbon::parse(Invoice::find($id)->created_at)->toDateString();
-            // return $pdf->download($date . '-Invoice#' . $id . '.pdf');
-            return $pdf->stream();
+            return $pdf->download($date . '-Invoice#' . $id . '.pdf');
+            // return $pdf->stream();
         })->name('admin.invoices.show');
     });
     // Purchases

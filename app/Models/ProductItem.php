@@ -10,7 +10,7 @@ class ProductItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_descripton_id',
+        'product_description_id',
         'sku_number',
         'price'
     ];

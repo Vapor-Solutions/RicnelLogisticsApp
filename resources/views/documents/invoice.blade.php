@@ -97,13 +97,13 @@
                 $total_count = 0;
                 $total_cost = 0;
             @endphp
-            @foreach (App\Models\ProductDescription::all() as $product)
+            @foreach ($invoice->productDescriptions() as $product)
                 @php
                     $count = 0;
                     $cost = 0;
                 @endphp
                 @foreach ($invoice->sale->productItems as $item)
-                    @if ($product->id == $item->product_description_id)
+                    @if ($product->product_description_id == $item->product_description_id)
                         @php
                             $cost += $item->pivot->sale_price;
                             $count++;
@@ -113,17 +113,15 @@
                     @endif
                 @endforeach
 
-
-                @if ($count > 0)
                     <tr style="font-size:12px">
-                        <th scope="row">#{{ $product->id }}</th>
-                        <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' }}</span>
-                            {{ $product->title }} - {{ $product->quantity }}{{ $product->unit->symbol }}</td>
+                        <th scope="row">#{{ $product->productDescription->id }}</th>
+                        <td>{{ $product->productDescription->brand->name != 'Miscellaneous' ? $product->productDescription->brand->name : '' }}</span>
+                            {{ $product->productDescription->title }} - {{ $product->productDescription->quantity }}{{ $product->productDescription->unit->symbol }}</td>
                         <td align="right">{{ $count }}</td>
-                        <td align="right">{{ number_format($count > 0 ? $cost / $count : 0, 2) }}</td>
+                        <td align="right">{{ number_format($product->count > 0 ? $cost / $product->count : 0, 2) }}</td>
                         <td align="right">{{ number_format($cost, 2) }}</td>
                     </tr>
-                @endif
+                    <tr></tr>
             @endforeach
         </tbody>
         <br>
