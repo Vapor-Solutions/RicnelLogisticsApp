@@ -87,6 +87,10 @@
                             </div>
                         </div>
                         <button class="btn btn-dark" wire:click="addToCart">Add To List</button>
+
+                        <div class="spinner-border" role="status" wire:loading>
+                            {{-- <span class="visually-hidden">Loading...</span> --}}
+                          </div>
                     </div>
                 </div>
             </div>
