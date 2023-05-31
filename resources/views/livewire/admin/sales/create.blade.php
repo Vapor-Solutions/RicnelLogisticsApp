@@ -65,7 +65,7 @@
                             <div class="col-md-6 col-12">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Quantity</label>
-                                    <input wire:model="quantity" type="number" min="0" step="1"
+                                    <input wire:model.lazy="quantity" type="number" min="0" step="1"
                                         max="{{ App\Models\ProductDescription::find(intval($product_id))->available_items ?? 0 }}"
                                         class="form-control" name="" id="" aria-describedby="helpId"
                                         placeholder="Enter the Number of items you want to buy">
@@ -77,7 +77,7 @@
                             <div class="col-md-6 col-12">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Price</label>
-                                    <input wire:model="price" type="number" min="1" step="1"
+                                    <input wire:model.lazy="price" type="number" min="1" step="1"
                                         class="form-control" name="" id="" aria-describedby="helpId"
                                         placeholder="Recomm: KES {{ number_format((App\Models\ProductDescription::find(intval($product_id))->avg_price ?? 0) * 1.165) }}">
                                     @error('price')
