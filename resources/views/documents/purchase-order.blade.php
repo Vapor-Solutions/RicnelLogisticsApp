@@ -85,7 +85,7 @@
                     <div
                         style="background: transparent; color:black;padding-left: 30px;font-size: 16px;font-weight: medium;letter-spacing: -1px;height: 73px;line-height: 75px;">
                         Purchase Order
-                        ALPS/LC/{{ Carbon\Carbon::parse($order->created_at)->format('y') }}/{{ sprintf('%04d', $order->id) }}
+                        RCNL/NBO/{{ Carbon\Carbon::parse($order->created_at)->format('y') }}/{{ sprintf('%04d', $order->id) }}
                     </div>
                 </td>
                 <td></td>
