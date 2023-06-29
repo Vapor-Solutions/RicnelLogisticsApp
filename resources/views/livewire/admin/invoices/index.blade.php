@@ -3,6 +3,16 @@
         <x-page-heading>Invoices List</x-page-heading>
 
         <div class="card my-5">
+            <div class="card-header">
+                {{-- <a href="{{ route('download-all-invoices') }}" class="btn btn-primary">
+                    Download All Invoices
+                </a> --}}
+                <button wire:click="downloadInvoices" class="btn btn-primary d-flex align-items-center">
+                    Download All Invoices
+                    <div class="spinner-border spinner-border-sm ml-auto" role="status" wire:loading>
+                      </div>
+                </button>
+            </div>
             <div class="table-responsive">
                 @if ($invoices->count() > 0)
                     <table class="table table-striped table-hover table-bordered align-middle">

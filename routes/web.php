@@ -8,6 +8,8 @@ use App\Models\PurchaseOrder;
 use App\Models\QuoteRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,14 +100,14 @@ Route::prefix('admin')->middleware([
         Route::get('/create', Admin\ProductDescriptions\Create::class)->name('admin.product-descriptions.create');
         Route::get('/{id}/edit', Admin\ProductDescriptions\Edit::class)->name('admin.product-descriptions.edit');
         Route::get('/{id}/show', Admin\ProductDescriptions\Show::class)->name('admin.product-descriptions.show');
-        Route::get('/stock-sheet', function(){
+        Route::get('/stock-sheet', function () {
             $products = ProductDescription::all();
 
-            $stock_sheet = Pdf::loadView('documents.stock-sheet',[
-                'products'=>$products
+            $stock_sheet = Pdf::loadView('documents.stock-sheet', [
+                'products' => $products
             ]);
 
-            return $stock_sheet->download('stock-sheet-'.Carbon::now()->toDateTimeString().'.pdf');
+            return $stock_sheet->download('stock-sheet-' . Carbon::now()->toDateTimeString() . '.pdf');
             // return $stock_sheet->stream();
         })->name('admin.product-descriptions.stock-sheet');
     });
@@ -141,7 +143,7 @@ Route::prefix('admin')->middleware([
         Route::get('/create', Admin\QuoteRequests\Create::class)->name('admin.quotation-requests.create');
         Route::get('/{id}/edit', Admin\QuoteRequests\Edit::class)->name('admin.quotation-requests.edit');
         Route::get('/{id}/show', Admin\QuoteRequests\Show::class)->name('admin.quotation-requests.show');
-        Route::get('/{id}/quote-request', function($id){
+        Route::get('/{id}/quote-request', function ($id) {
             $pdf = Pdf::loadView('documents.quote-request', [
                 'quoteRequest' => QuoteRequest::find($id)
             ]);
@@ -169,6 +171,7 @@ Route::prefix('admin')->middleware([
             return $pdf->download($date . '- RICNEL - Invoice # ' . $id . '.pdf');
             // return $pdf->stream();
         })->name('admin.invoices.show');
+
     });
     // Purchases
     Route::middleware('permission:Read Purchases')->prefix('purchases')->group(function () {
