@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Sales;
 
+use App\Imports\SalesImport;
 use App\Models\ActivityLog;
 use App\Models\ProductDescription;
 use App\Models\ProductItem;
@@ -9,10 +10,16 @@ use App\Models\Sale;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Create extends Component
 {
+    use WithFileUploads;
+
     public $productDescriptions;
+
+    public $file;
 
     public $productsList = [];
     public Sale $sale;
@@ -115,6 +122,48 @@ class Create extends Component
             'user_id' => auth()->user()->id,
             'payload' => "Created Sale No. " . $this->sale->id
         ]);
+    }
+
+    public function uploadFile()
+    {
+        // $file = $this->file->file('excel_file');
+
+        // Validate the uploaded file if necessary
+        $this->validate([
+            'file' => 'required|mimes:xlsx,xls,csv,txt'
+        ]);
+
+        // Store the uploaded file
+        $filePath = $this->file->store('excel_files');
+
+        // Import and parse the Excel data
+        $import = new SalesImport();
+        Excel::import($import, $filePath);
+
+        // Access the parsed data
+        $data = $import->getData();
+
+
+
+        for ($i = 1; $i < count($data); $i++) {
+            $dataValue = '%' . $data[$i][0] . '%';
+            $desc = ProductDescription::where('title', 'like', $dataValue)->orWhereHas('brand', function ($query) use ($dataValue) {
+                $query->where('name', 'like', $dataValue);
+            })->orWhereHas('productCategory', function ($query) use ($dataValue) {
+                $query->where('title', 'like', $dataValue);
+            })->first();
+
+            if ($desc) {
+                array_push($this->productsList, [intval($desc->id), intval($data[$i][1]), floatval($data[$i][2])]);
+            }
+
+            // dd($data[$i][0]);
+        }
+
+        // Process the data as needed
+
+        // Return a response or emit an event as required
+        // dd($this->productsList);
     }
 
     public function render()

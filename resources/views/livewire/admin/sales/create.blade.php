@@ -2,6 +2,16 @@
     <div class="container-fluid">
         <x-page-heading>Add a Sale</x-page-heading>
 
+        <div class="input-group mb-5">
+            <input type="file" wire:model="file" class="form-control" placeholder="Recipient's username"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" wire:click="uploadFile" id="button-addon2">Upload
+                Data</button>
+        </div>
+
+        <div class="mb-5">
+            <button class="btn btn-primary" wire:click="downloadTemplate">Download Template</button>
+        </div>
         <div class="row">
             <div class="col-md-4 col-12">
                 <div class="card">
@@ -40,7 +50,8 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Product Description</label>
-                                    <select wire:model.defer="product_id" class="form-control" name="" id="">
+                                    <select wire:model.defer="product_id" class="form-control" name=""
+                                        id="">
 
                                         <option selected>Select one</option>
 
@@ -89,7 +100,7 @@
 
                         <div class="spinner-border" role="status" wire:loading>
                             {{-- <span class="visually-hidden">Loading...</span> --}}
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,7 +135,8 @@
 
                                             <tr class="">
                                                 <td scope="row">{{ $product->id }}</td>
-                                                <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' . ' ' . $product->title }} -
+                                                <td>{{ $product->brand->name != 'Miscellaneous' ? $product->brand->name : '' . ' ' . $product->title }}
+                                                    -
                                                     {{ $product->quantity . $product->unit->symbol }}</td>
                                                 <td>{{ $item[1] }}</td>
                                                 <td>

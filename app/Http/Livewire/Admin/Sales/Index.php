@@ -2,13 +2,19 @@
 
 namespace App\Http\Livewire\Admin\Sales;
 
+use App\Imports\SalesImport;
 use App\Models\Sale;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Index extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+
+    public $file;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -35,4 +41,7 @@ class Index extends Component
             'sales' => Sale::orderBy('id', 'DESC')->paginate(10)
         ]);
     }
+
+
+
 }
