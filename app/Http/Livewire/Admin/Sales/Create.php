@@ -143,10 +143,20 @@ class Create extends Component
         // Access the parsed data
         $data = $import->getData();
 
+        // dd($data);
 
+        $values = [];
 
-        for ($i = 1; $i < count($data); $i++) {
-            $dataValue = '%' . $data[$i][0] . '%';
+        foreach ($data as $item) {
+            if ($item[0] != null) {
+                array_push($values, [$item[0], $item[1], $item[2]]);
+            }
+        }
+
+        // dd($test);
+
+        for ($i = 1; $i < count($values); $i++) {
+            $dataValue = '%' . $values[$i][0] . '%';
             $desc = ProductDescription::where('title', 'like', $dataValue)->orWhereHas('brand', function ($query) use ($dataValue) {
                 $query->where('name', 'like', $dataValue);
             })->orWhereHas('productCategory', function ($query) use ($dataValue) {
@@ -157,8 +167,11 @@ class Create extends Component
                 array_push($this->productsList, [intval($desc->id), intval($data[$i][1]), floatval($data[$i][2])]);
             }
 
-            // dd($data[$i][0]);
         }
+
+
+
+        // dd($data[$i][0]);
 
         // Process the data as needed
 
