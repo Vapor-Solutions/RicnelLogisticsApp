@@ -1,6 +1,15 @@
 <div>
     <div class="container-fluid">
         <x-page-heading>Add a Purchase</x-page-heading>
+        <div class="input-group mb-5">
+            <input type="file" wire:model="file" class="form-control" placeholder="Recipient's username"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" wire:click="uploadFile" id="button-addon2">Upload
+                Data</button>
+        </div>
+        @error('file')
+            <small id="helpId" class="form-text text-danger">{{ $message }}</small>
+        @enderror
 
         <div class="row">
             <div class="col-md-4 col-12">

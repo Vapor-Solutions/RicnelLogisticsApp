@@ -2,16 +2,23 @@
 
 namespace App\Http\Livewire\Admin\Purchases;
 
+use App\Imports\SalesImport;
 use App\Models\ActivityLog;
 use App\Models\ProductDescription;
 use App\Models\ProductItem;
 use App\Models\Purchase;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Create extends Component
 {
+    use WithFileUploads;
     public $productDescriptions;
+
+    public $file;
+
 
     public $productsList = [];
     public Purchase $purchase;
@@ -61,6 +68,59 @@ class Create extends Component
     {
         unset($this->productsList[$key]);
     }
+
+    public function uploadFile()
+    {
+        // $file = $this->file->file('excel_file');
+
+        // Validate the uploaded file if necessary
+        $this->validate([
+            'file' => 'required|mimes:xlsx,xls,csv,txt'
+        ]);
+
+        // Store the uploaded file
+        $filePath = $this->file->store('excel_files');
+
+        // Import and parse the Excel data
+        $import = new SalesImport();
+        Excel::import($import, $filePath);
+
+        // Access the parsed data
+        $data = $import->getData();
+
+        // dd($data);
+
+        $values = [];
+
+        foreach ($data as $item) {
+            if ($item[0] != null) {
+                array_push($values, [$item[0], $item[1], $item[2]]);
+            }
+        }
+
+        // dd($test);
+
+        for ($i = 1; $i < count($values); $i++) {
+            $dataValue = '%' . $values[$i][0] . '%';
+            $desc = ProductDescription::where('title', 'like', $dataValue)->orWhereHas('brand', function ($query) use ($dataValue) {
+                $query->where('name', 'like', $dataValue);
+            })->orWhereHas('productCategory', function ($query) use ($dataValue) {
+                $query->where('title', 'like', $dataValue);
+            })->first();
+
+            if ($desc) {
+                array_push($this->productsList, [intval($desc->id), intval($data[$i][1]), floatval($data[$i][2])]);
+            }
+        }
+
+        if (count($this->productsList) == 0) {
+            $this->emit('done', [
+                'info' => 'There were no items that matched the system database'
+            ]);
+        }
+        unlink($filePath);
+    }
+
 
 
     public function makePurchase()

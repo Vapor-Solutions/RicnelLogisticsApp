@@ -2,14 +2,17 @@
     <div class="container-fluid">
         <x-page-heading>Add a Sale</x-page-heading>
 
-        <div class="input-group mb-5">
+        <div class="input-group">
             <input type="file" wire:model="file" class="form-control" placeholder="Recipient's username"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="button" wire:click="uploadFile" id="button-addon2">Upload
                 Data</button>
         </div>
+        @error('file')
+            <small id="helpId" class="form-text text-danger">{{ $message }}</small>
+        @enderror
 
-        <div class="mb-5">
+        <div class="my-5">
             <button class="btn btn-primary" wire:click="downloadTemplate">Download Template</button>
         </div>
         <div class="row">
